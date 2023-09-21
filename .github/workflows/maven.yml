@@ -1,4 +1,4 @@
-name: Maven CI/CD
+name: Maven CI/CD Test
 
 on:
   push:
@@ -13,21 +13,23 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Set up JDK 1.8
-      uses: actions/setup-java@v2
-      with:
-        java-version: '8'
-        distribution: 'adopt'
+    #- name: Set up JDK 1.8
+    #  uses: actions/setup-java@v2
+    #  with:
+    #    java-version: '8'
+    #    distribution: 'adopt'
 
-    - name: Cache Maven dependencies
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2
-        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-        restore-keys: ${{ runner.os }}-m2
+    #- name: Cache Maven dependencies
+    #  uses: actions/cache@v2
+    #  with:
+    #    path: ~/.m2
+    #    key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+    #    restore-keys: ${{ runner.os }}-m2
 
-    - name: Navigate to Project Directory
-      run: cd "Social Media Analyzer"
+    - name: Navigate to Project Directory and Echo
+      run: |
+        cd "Social Media Analyzer"
+        echo "CI/CD test is working!"
 
-    - name: Build with Maven
-      run: mvn -B package
+    #- name: Build with Maven
+    #  run: mvn -B package
